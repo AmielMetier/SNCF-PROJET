@@ -45,7 +45,7 @@ def index():
         geolocator = Nominatim(user_agent="mon_projet")
         location = geolocator.geocode(adresse, country_codes="fr")
         # Lire le fichier csv
-        df = pd.read_csv('tgvmax.csv', sep=';')
+        df = pd.read_csv('https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/tgvmax/exports/csv?lang=fr&timezone=Europe%2FBerlin&use_labels=true&delimiter=%3B', sep=';')
         df = df[~df['ENTITY'].str.contains('AUTOCAR SNCF', na=False)]
         df = df[~df['Axe'].str.contains('INTERNATIONAL', na=False)]
         df = df.replace(to_replace="PARIS (intramuros)",
